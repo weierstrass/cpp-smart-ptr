@@ -27,9 +27,7 @@
 *.i*86
 *.x86_64
 *.hex
-*/problem_[0-9]
-*/problem_[0-9][0-9]
-*/problem_[0-9][0-9][0-9]
+*cpp-smart-ptr-test
 
 # Debug files
 *.dSYM/
