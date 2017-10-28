@@ -17,6 +17,15 @@ namespace ab {
             return ptr != 0;
         }
 
+        T* get() const {
+            return ptr;
+        }
+
+        T& operator*() const {
+            assert(ptr);
+            return *ptr;
+        }
+
     private:
         T* ptr;
              

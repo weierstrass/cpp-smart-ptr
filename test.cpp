@@ -27,3 +27,12 @@ TEST(test, unique_ptr_operator_bool) {
     if (!ptr2) FAIL(); 
 }
 
+TEST(test, unique_ptr_get) {
+    ab::unique_ptr<int> ptr(new int(5));
+    EXPECT_EQ(5, *ptr.get());
+}
+
+TEST(test, unique_ptr_operator_star) {
+    ab::unique_ptr<int> ptr(new int(5));
+    EXPECT_EQ(5, *ptr);
+}
