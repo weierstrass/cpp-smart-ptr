@@ -1,32 +1,58 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
+# Object files
 *.o
+*.ko
 *.obj
+*.elf
 
 # Precompiled Headers
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+# Libraries
 *.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
 # Executables
 *.exe
 *.out
 *.app
+*.i*86
+*.x86_64
+*.hex
+*/problem_[0-9]
+*/problem_[0-9][0-9]
+*/problem_[0-9][0-9][0-9]
+
+# Debug files
+*.dSYM/
+*.su
+*/cachegrind.out*
+*/callgrind.out*
+*~
+
+# cmake
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+Testing
+CMakeFiles/*
+CPackConfig.cmake
+CPackSourceConfig.cmake
+Debug/*
+Release/*
+_CPack_Packages/*
+
+.DS_Store
+.#*
