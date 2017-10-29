@@ -1,19 +1,20 @@
 #include "test.hpp"
 
 #include "unique_ptr.hpp"
+#include "shared_ptr.hpp"
 
 #include <iostream>
 
 static int destruct_count(0);
 
 struct Dummy {
-    Dummy(int val) : val(val) {}
-    Dummy() : val(0) {}
+    Dummy(int val) : val(val) {destruct_count = 0;}
+    Dummy() : val(0) {destruct_count = 0;}
     int val;
     ~Dummy(){destruct_count++;}
 };
 
-TEST(test, unique_ptr_basic) {
+TEST(test, unique_ptr_destruction) {
     {
         ab::unique_ptr<Dummy> ptr(new Dummy);
     }
@@ -50,4 +51,27 @@ TEST(test, unique_ptr_move) {
 
     EXPECT_EQ(5, *ptr2);
     if (ptr) FAIL();
+}
+
+TEST(test, shared_ptr_creation) {
+    ab::shared_ptr<int> ptr(new int(5));
+    EXPECT_EQ(1, ptr.count());
+    EXPECT_EQ(5, *ptr);
+}
+
+TEST(test, shared_ptr_destruction) {
+    {
+        ab::shared_ptr<Dummy> ptr2;
+        {
+            ab::shared_ptr<Dummy> ptr1(new Dummy);
+            ab::shared_ptr<Dummy> ptr3(ptr1);
+            EXPECT_EQ(2, ptr1.count());
+            EXPECT_EQ(2, ptr3.count());
+
+            ptr2 = ptr1;
+            EXPECT_EQ(3, ptr1.count());
+        }
+        EXPECT_EQ(1, ptr2.count());
+    }
+    EXPECT_EQ(1, destruct_count);
 }
