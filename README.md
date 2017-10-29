@@ -1,14 +1,14 @@
 # cpp-smart-ptr
 Smart pointer implementations in C++
 
-##Compile in debug mode
+## Compile in debug mode
 
 cmake . -DCMAKE_BUILD_TYPE=Debug && make
 
-##Compile in release mode
+## Compile in release mode
 
 cmake . -DCMAKE_BUILD_TYPE=Release && make
 
-##Run tests
+## Run tests
 
-./test
+./cpp-smart-ptr-test
